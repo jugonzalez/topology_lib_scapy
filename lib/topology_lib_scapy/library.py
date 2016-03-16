@@ -25,17 +25,16 @@ from __future__ import print_function, division
 # Add your library functions here.
 
 
+class Scapy:
 
-def send(enode, host):
-    print('_ Host {}'.format(host))
+    def __init__(self, enode):
+        self.enode = enode
 
-def your_function_here():
-    """
-    Document your function here.
-    """
-    pass
+    def send(self, host):
+        print('_ Host {}'.format(host))
+
 
 __all__ = [
-    'your_function_here', 'send'
+    'Scapy'
 ]
 
