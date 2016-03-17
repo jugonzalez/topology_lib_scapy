@@ -29,6 +29,12 @@ class Scapy:
     def __init__(self, enode):
         self.enode = enode
 
+    def __enter__(self):
+        pass
+
+    def __exit__(self):
+        pass
+
     def send(self, host):
         print('_ Host {}'.format(host))
 
