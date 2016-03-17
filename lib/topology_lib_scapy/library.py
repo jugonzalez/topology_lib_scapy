@@ -32,7 +32,7 @@ class Scapy:
     def __enter__(self):
         pass
 
-    def __exit__(self):
+    def __exit__(self, type, value, traceback):
         pass
 
     def send(self, host):
