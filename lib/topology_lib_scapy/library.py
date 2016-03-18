@@ -25,7 +25,7 @@ from __future__ import print_function, division
 # Add your library functions here.
 
 
-class Scapy:
+class CLI:
 
     def __init__(self, enode):
         self.enode = enode
@@ -39,11 +39,10 @@ class Scapy:
     def send_command(self, command):
         self.enode._shells['bash'].send_command('scapy', matches='>>> ')
         self.enode._shells['bash'].send_command(command, matches='>>> ')
-        response = self.enode._shells['bash']
+        response = self.enode._shells['bash'].get_response()
         return response
 
 
 __all__ = [
-    'Scapy'
+    'CLI'
 ]
-
