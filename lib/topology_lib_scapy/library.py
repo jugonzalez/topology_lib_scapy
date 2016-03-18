@@ -38,6 +38,7 @@ class Scapy:
 
     def send(command):
         self.enode.(command)
+        print('OK')
 
 
 __all__ = [
