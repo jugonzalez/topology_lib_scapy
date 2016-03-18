@@ -36,8 +36,8 @@ class Scapy:
     def __exit__(self, type, value, traceback):
         pass
 
-    def send(self, host):
-        print('_ Host {}'.format(host))
+    def send(command):
+        self.enode.(command)
 
 
 __all__ = [
