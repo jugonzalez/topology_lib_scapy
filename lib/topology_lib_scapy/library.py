@@ -30,7 +30,7 @@ class Scapy:
         self.enode = enode
 
     def __enter__(self):
-        pass
+        return self
 
     def __exit__(self, type, value, traceback):
         pass
