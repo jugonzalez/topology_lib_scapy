@@ -36,9 +36,10 @@ class Scapy:
     def __exit__(self, type, value, traceback):
         pass
 
-    def send(command):
-        print(dir(self.enode))
-        print('OK')
+    def send_command(command):
+        self.enode._shells['bash'].send_command(command, matches='>>> ')
+        response = self.enode._shells['bash']
+        return response
 
 
 __all__ = [
