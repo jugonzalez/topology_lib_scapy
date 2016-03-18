@@ -37,7 +37,7 @@ class Scapy:
         pass
 
     def send(command):
-        self.enode.(command)
+        print(dir(self.enode))
         print('OK')
 
 
