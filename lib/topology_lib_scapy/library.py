@@ -24,9 +24,8 @@ from __future__ import print_function, division
 
 # Add your library functions here.
 
-class ContextManager(object):
 
-class Scapy(ContextManager):
+class Scapy:
 
     def __init__(self, enode):
         self.enode = enode
