@@ -26,7 +26,9 @@ from __future__ import with_statement
 # Add your library functions here.
 
 
-class CLI(object):
+class ContextManager(object):
+
+class CLI(ContextManager):
 
     def __init__(self, enode):
         self.enode = enode
