@@ -37,11 +37,11 @@ class CLI:
         return self
 
     def __exit__(self, type, value, traceback):
-        self.enode._shells['bash'].get_response()
         self.enode._shells['bash']._prompt = self.initial_prompt
         self.enode._shells['bash'].send_command('exit()')
 
     def send_command(self, command):
+        self.enode._shells['bash'].get_response()
         self.enode._shells['bash'].send_command(command)
         response = self.enode._shells['bash'].get_response()
         return response
