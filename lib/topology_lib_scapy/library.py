@@ -41,7 +41,7 @@ class CLI:
         self.enode._shells['bash'].send_command('exit()')
 
     def send_command(self, command):
-        print(self.enode._shells['bash']._prompt == '>>>')
+        print(self.enode._shells['bash']._prompt == '>>> ')
         self.enode._shells['bash'].send_command(command)
         response = self.enode._shells['bash'].get_response()
         return response
