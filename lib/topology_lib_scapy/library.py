@@ -33,7 +33,7 @@ class CLI:
     def __enter__(self):
         self.initial_prompt = self.enode._shells['bash']._prompt
         self.enode._shells['bash']._prompt = '>>> '
-        self.enode._shells['bash'].send_command('scapy',matches='>>> ')
+        self.enode._shells['bash'].send_command('scapy', matches='>>> ')
         return self
 
     def __exit__(self, type, value, traceback):
