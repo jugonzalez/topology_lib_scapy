@@ -34,6 +34,7 @@ class CLI:
         self.initial_prompt = self.enode._shells['bash']._prompt
         self.enode._shells['bash']._prompt = '>>> '
         self.enode._shells['bash'].send_command('scapy')
+        self.enode._shells['bash'].get_response()
         return self
 
     def __exit__(self, type, value, traceback):
