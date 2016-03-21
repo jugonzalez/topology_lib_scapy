@@ -21,11 +21,12 @@ topology_lib_scapy communication library implementation.
 
 from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
+from __future__ import with_statement
 
 # Add your library functions here.
 
 
-class CLI:
+class CLI(object):
 
     def __init__(self, enode):
         self.enode = enode
@@ -41,7 +42,6 @@ class CLI:
         self.enode._shells['bash'].send_command('exit()')
 
     def send_command(self, command):
-        print(self.enode._shells['bash']._prompt == '>>> ')
         self.enode._shells['bash'].send_command(command)
         response = self.enode._shells['bash'].get_response()
         return response
