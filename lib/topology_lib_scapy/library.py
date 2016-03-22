@@ -31,17 +31,16 @@ class CLI:
         self.enode = enode
 
     def __enter__(self):
-        self.enode._shells['bash'].send_command('scapy', matches='>>> ')
+        self.enode.get_shell('bash').send_command('scapy', matches='>>> ')
         return self
 
     def __exit__(self, type, value, traceback):
-        self.enode._shells['bash'].send_command('exit()')
+        self.enode.get_shell('bash').send_command('exit()')
 
     def send_command(self, command):
-        self.enode._shells['bash'].send_command(command, matches='>>> ')
-        response = self.enode._shells['bash'].get_response()
+        self.enode.get_shell('bash').send_command(command, matches='>>> ')
+        response = self.enode.get_shell('bash').get_response()
         return response
-
 
 __all__ = [
     'CLI'
