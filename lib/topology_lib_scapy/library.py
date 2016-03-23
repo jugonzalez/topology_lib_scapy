@@ -22,9 +22,8 @@ topology_lib_scapy communication library implementation.
 from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
 from __future__ import with_statement
-#import urllib2
+from __future__ import urllib2
 
-# Add your library functions here.
 
 class CLI:
 
