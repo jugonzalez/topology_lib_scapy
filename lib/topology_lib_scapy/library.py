@@ -38,14 +38,15 @@ class CLI:
     def __exit__(self, type, value, traceback):
         self.enode.get_shell('bash').send_command('exit()')
 
-
+    '''
     def load_protocols(self, file_name):
         req = urllib2.Request(url=file_name)
         f = urllib2.urlopen(req)
         protocols_src = f.read()
         command = 'exec({},globals())'.format(protocols_src)
         self.send_command(command)
-        
+    '''
+
     def send_command(self, command):
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
         response = self.enode.get_shell('bash').get_response()
