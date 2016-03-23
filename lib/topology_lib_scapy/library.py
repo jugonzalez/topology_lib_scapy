@@ -23,8 +23,6 @@ from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
 from __future__ import with_statement
 import urllib
-#from urllib2 import Request
-#import urllib2
 
 
 class CLI:
@@ -39,14 +37,10 @@ class CLI:
     def __exit__(self, type, value, traceback):
         self.enode.get_shell('bash').send_command('exit()')
 
-    '''
     def load_protocols(self, file_name):
-        req = urllib2.Request(url=file_name)
-        f = urllib2.urlopen(req)
-        protocols_src = f.read()
-        command = 'exec({},globals())'.format(protocols_src)
+        protocols = urllib.request(file_name).read()
+        command = 'exec({},globals())'.format(protocols)
         self.send_command(command)
-    '''
 
     def send_command(self, command):
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
