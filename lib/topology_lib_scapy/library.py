@@ -22,7 +22,7 @@ topology_lib_scapy communication library implementation.
 from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
 from __future__ import with_statement
-import urllib
+import requests
 
 
 class CLI:
@@ -38,8 +38,8 @@ class CLI:
         self.enode.get_shell('bash').send_command('exit()')
 
     def load_protocols(self, file_name):
-        protocols = urllib.request(file_name).read()
-        command = 'exec({},globals())'.format(protocols)
+        protocols = requests.get(file_name)
+        command = 'exec({},globals())'.format(protocols.text)
         self.send_command(command)
 
     def send_command(self, command):
