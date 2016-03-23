@@ -22,6 +22,7 @@ topology_lib_scapy communication library implementation.
 from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
 from __future__ import with_statement
+import urllib2
 
 # Add your library functions here.
 
@@ -37,6 +38,14 @@ class CLI:
     def __exit__(self, type, value, traceback):
         self.enode.get_shell('bash').send_command('exit()')
 
+
+    def load_protocols(self, file_name):
+        file_src = urllib2.Request(file_name)
+        file_src = urllib2.urlopen(file_src)
+        protocols_src = file_src.read()
+        command = 'exec({},globals())'.format(protocols_src)
+        self.send_command(command)
+        
     def send_command(self, command):
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
         response = self.enode.get_shell('bash').get_response()
