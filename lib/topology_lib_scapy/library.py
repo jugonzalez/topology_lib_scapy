@@ -40,9 +40,9 @@ class CLI:
 
 
     def load_protocols(self, file_name):
-        file_src = urllib2.Request(file_name)
-        file_src = urllib2.urlopen(file_src)
-        protocols_src = file_src.read()
+        req = urllib2.Request(url=file_name)
+        f = urllib2.urlopen(req)
+        protocols_src = f.read()
         command = 'exec({},globals())'.format(protocols_src)
         self.send_command(command)
         
