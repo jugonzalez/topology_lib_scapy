@@ -37,8 +37,7 @@ class CLI:
     def __exit__(self, type, value, traceback):
         self.enode.get_shell('bash').send_command('exit()')
     
-    #load settings
-    def load_protocols(self, file_name):
+    def load_settings(self, file_name):
         protocols = requests.get(file_name)
         print(protocols.text)
         command = 'exec({!r},globals())'.format(protocols.text)
