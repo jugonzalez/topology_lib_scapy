@@ -41,6 +41,8 @@ class CLI:
     def load_protocols(self, file_name):
         protocols = requests.get(file_name)
         print(protocols.text)
+        from scapy.all import *
+        exec(protocols.text,globals())
         command = 'exec({},globals())'.format(protocols.text)
         self.send_command(command)
 
