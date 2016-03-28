@@ -39,9 +39,7 @@ class CLI:
     
     def load_settings(self, file_name):
         protocols = requests.get(file_name)
-        print(protocols.text)
         command = 'exec({!r},globals())'.format(protocols.text)
-        print(command)
         self.send_command(command)
 
     def send_command(self, command):
