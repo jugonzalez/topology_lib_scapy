@@ -43,7 +43,7 @@ class CLI:
         print(protocols.text)
         from scapy.all import *
         exec(protocols.text,globals())
-        command = 'exec({},globals())'.format(protocols.text)
+        command = 'exec("{}",globals())'.format(protocols.text)
         print('----')
         print(command)
         self.send_command(command)
