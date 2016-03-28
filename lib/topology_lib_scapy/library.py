@@ -41,7 +41,7 @@ class CLI:
     def load_protocols(self, file_name):
         protocols = requests.get(file_name)
         print(protocols.text)
-        command = 'exec("{}",globals())'.format(protocols.text)
+        command = 'exec({!r},globals())'.format(protocols.text)
         print(command)
         self.send_command(command)
 
