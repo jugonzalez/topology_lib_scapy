@@ -38,8 +38,8 @@ class CLI:
         self.enode.get_shell('bash').send_command('exit()')
     
     def load_settings(self, file_name):
-        protocols = requests.get(file_name)
-        command = 'exec({!r},globals())'.format(protocols.text)
+        settings = requests.get(file_name).text
+        command = 'exec({!r},globals())'.format(settings)
         self.send_command(command)
 
     def send_command(self, command):
