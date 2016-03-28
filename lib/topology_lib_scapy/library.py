@@ -40,7 +40,8 @@ class CLI:
     def load_settings(self, file_name):
         settings = requests.get(file_name).text
         command = 'exec({!r},globals())'.format(settings)
-        self.send_command(command)
+        response = self.send_command(command)
+        assert not response
 
     def send_command(self, command):
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
