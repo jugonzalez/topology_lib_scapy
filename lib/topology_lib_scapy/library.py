@@ -44,6 +44,8 @@ class CLI:
         from scapy.all import *
         exec(protocols.text,globals())
         command = 'exec({},globals())'.format(protocols.text)
+        print('----')
+        print(command)
         self.send_command(command)
 
     def send_command(self, command):
