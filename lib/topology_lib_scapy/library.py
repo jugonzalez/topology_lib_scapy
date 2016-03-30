@@ -23,7 +23,8 @@ from __future__ import unicode_literals, absolute_import
 from __future__ import print_function, division
 from __future__ import with_statement
 import requests
-
+import pexpect
+import re
 
 class CLI:
 
@@ -48,6 +49,15 @@ class CLI:
         response = self.enode.get_shell('bash').get_response()
         return response
 
+    def load_settings2(self, file_path):
+        pexpect.run('wget {} -P /tmp/scapy_settings/'.format(path_file))
+        pattern_name = re.compile('(?<=/)[^/]+$')
+        file_name = pattern_name.findall(file_path)[0]
+        settings = open('/tmp/scapy_settings/{}'.format(file_name)).read()
+        command = 'exec({!r},globals())'.format(settings)
+        response = self.send_command(command)
+        assert not response
+    
 __all__ = [
     'CLI'
 ]
