@@ -43,7 +43,7 @@ class CLI:
         response = self.send_command(command)
         assert not response
 
-    def send_command(self, command):
+    def send_cmd(self, command):
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
         response = self.enode.get_shell('bash').get_response()
         return response
