@@ -71,7 +71,7 @@ class CLI:
         :param file_path: path where external source is located 
         :type file_path: string
         """
-        pexpect.run('wget {} -P /tmp/scapy_settings/'.format(path_file))
+        pexpect.run('wget {} -P /tmp/scapy_settings/'.format(file_path))
         pattern_name = re.compile('(?<=/)[^/]+$')
         file_name = pattern_name.findall(file_path)[0]
         settings = open('/tmp/scapy_settings/{}'.format(file_name)).read()
