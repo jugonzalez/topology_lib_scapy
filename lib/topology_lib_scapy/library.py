@@ -32,10 +32,16 @@ class CLI:
         self.enode = enode
 
     def __enter__(self):
+        """
+        Prepare context opening a scapy shell
+        """
         self.enode.get_shell('bash').send_command('scapy', matches='>>> ')
         return self
 
     def __exit__(self, type, value, traceback):
+        """
+        Close scapy shell
+        """
         self.enode.get_shell('bash').send_command('exit()')
 
     
@@ -45,7 +51,7 @@ class CLI:
         :param url_name: remote path where file is located
         :type url_name: string
         """
-        settings = requests.get(url__name).text
+        settings = requests.get(url_file).text
         command = 'exec({!r},globals())'.format(settings)
         response = self.send_cmd(command)
         assert not response
