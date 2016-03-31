@@ -37,19 +37,34 @@ class CLI:
 
     def __exit__(self, type, value, traceback):
         self.enode.get_shell('bash').send_command('exit()')
+
     
-    def load_settings(self, file_name):
-        settings = requests.get(file_name).text
+    def load_settings(self, url_file):
+        """
+        Load settings from file to remote node through HTTP protocol
+        :param url_name: remote path where file is located
+        :type url_name: string
+        """
+        settings = requests.get(url__name).text
         command = 'exec({!r},globals())'.format(settings)
         response = self.send_cmd(command)
         assert not response
 
     def send_cmd(self, command):
+        """
+        Send instructions to remote scapy command line
+        :param command: instruction to execute remotely
+        """
         self.enode.get_shell('bash').send_command(command, matches='>>> ')
         response = self.enode.get_shell('bash').get_response()
         return response
 
     def load_settings2(self, file_path):
+        """
+        Get settings from a external source and load them at a remote node
+        :param file_path: path where external source is located 
+        :type file_path: string
+        """
         pexpect.run('wget {} -P /tmp/scapy_settings/'.format(path_file))
         pattern_name = re.compile('(?<=/)[^/]+$')
         file_name = pattern_name.findall(file_path)[0]
