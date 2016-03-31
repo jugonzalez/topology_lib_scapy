@@ -41,7 +41,7 @@ class CLI:
     def load_settings(self, file_name):
         settings = requests.get(file_name).text
         command = 'exec({!r},globals())'.format(settings)
-        response = self.send_command(command)
+        response = self.send_cmd(command)
         assert not response
 
     def send_cmd(self, command):
@@ -55,7 +55,7 @@ class CLI:
         file_name = pattern_name.findall(file_path)[0]
         settings = open('/tmp/scapy_settings/{}'.format(file_name)).read()
         command = 'exec({!r},globals())'.format(settings)
-        response = self.send_command(command)
+        response = self.send_cmd(command)
         assert not response
     
 __all__ = [
