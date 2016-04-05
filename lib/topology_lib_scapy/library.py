@@ -37,6 +37,8 @@ class CLI:
         self.enode.get_shell('bash').send_command('scapy', matches=scapy_prompt)
         self.enode.get_shell('bash').send_command('import sys', matches=scapy_prompt)
         self.enode.get_shell('bash').send_command('sys.path.append(".")', matches=scapy_prompt)
+        self.enode.get_shell('bash').send_command('sys.path', matches=scapy_prompt)
+        print(self.enode.get_shell('bash').get_response())
         return self
 
     def __exit__(self, type, value, traceback):
