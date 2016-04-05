@@ -34,9 +34,9 @@ class CLI:
         """
         Prepare context opening a scapy shell
         """
-        self.enode.get_shell('bash').send_command('scapy', matches=scapy_prompt)
-        self.enode.get_shell('bash').send_command('import sys', matches=scapy_prompt)
-        self.enode.get_shell('bash').send_command('sys.path.append(".")', matches=scapy_prompt)
+        self.enode.get_shell('bash').send_command('scapy', matches=self.scapy_prompt)
+        self.enode.get_shell('bash').send_command('import sys', matches=self.scapy_prompt)
+        self.enode.get_shell('bash').send_command('sys.path.append(".")', matches=self.scapy_prompt)
         return self
 
     def __exit__(self, type, value, traceback):
@@ -51,7 +51,7 @@ class CLI:
         Send instructions to remote scapy command line
         :param command: instruction to execute remotely
         """
-        self.enode.get_shell('bash').send_command(command, matches=scapy_prompt)
+        self.enode.get_shell('bash').send_command(command, matches=self.scapy_prompt)
         response = self.enode.get_shell('bash').get_response()
         return response
 
