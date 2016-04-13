@@ -24,8 +24,19 @@ from __future__ import print_function, division
 from __future__ import with_statement
 
 
-class CLI:
+class Shell:
+    """
+        This class defines a context manager object.
 
+        Usage:
+
+        ::
+            with Shell() as ctx:
+                ctx.cmd(command)
+
+        This way a scapy shell will be opened at the beggining and closed at the end.
+        
+        """
     def __init__(self, enode):
         self.enode = enode
         self.scapy_prompt = '>>> '
@@ -37,6 +48,7 @@ class CLI:
         self.enode.get_shell('bash').send_command('scapy', matches=self.scapy_prompt)
         self.enode.get_shell('bash').send_command('import sys', matches=self.scapy_prompt)
         self.enode.get_shell('bash').send_command('sys.path.append(".")', matches=self.scapy_prompt)
+        self.enode.get_shell('bash').send_command('sys.path.append("/tmp")', matches=self.scapy_prompt)
         return self
 
     def __exit__(self, type, value, traceback):
@@ -46,10 +58,11 @@ class CLI:
         self.enode.get_shell('bash').send_command('exit()')
 
     
-    def send_cmd(self, command):
+    def cmd(self, command):
         """
         Send instructions to remote scapy command line
         :param command: instruction to execute remotely
+        :type command: string"
         """
         self.enode.get_shell('bash').send_command(command, matches=self.scapy_prompt)
         response = self.enode.get_shell('bash').get_response()
